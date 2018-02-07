@@ -1,0 +1,22 @@
+####################################
+#       Syntax Coloring Map        #
+#       For YK04_Controller        #
+####################################
+
+####################################
+#       Data types (KEYWORD1)      #
+####################################
+
+YK04_Module		KEYWORD1
+Button			KEYWORD1
+
+####################################
+# Methods and Functions (KEYWORD2) #
+####################################
+
+singleRead		KEYWORD2
+multipleRead	KEYWORD2
+isA				KEYWORD2
+isB				KEYWORD2
+isC				KEYWORD2
+isD				KEYWORD2
