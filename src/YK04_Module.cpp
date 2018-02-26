@@ -1,5 +1,5 @@
 /**
-	The class implements a set of methods of the YK04_Controller.h 
+	The class implements a set of methods of the YK04_Module.h 
 	library for working with a remote control sensors based 
 	on the YK04 driver.
 
