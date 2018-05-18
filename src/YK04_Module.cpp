@@ -56,9 +56,8 @@ YK04_Module::Button YK04_Module::singleRead() {
 	if (currentButton != this->previousButton) {
 		this->previousButton = currentButton;
 		return currentButton;
-	} else {
-		return Button::NOT;
 	}
+	return Button::NOT;
 }
 
 /**
@@ -81,9 +80,8 @@ YK04_Module::Button YK04_Module::multipleRead() {
 		return Button::C;
 	} else if (isD()) {
 		return Button::D;
-	} else {
-		return Button::NOT;
 	}
+	return Button::NOT;
 }
 
 boolean YK04_Module::isA() {
