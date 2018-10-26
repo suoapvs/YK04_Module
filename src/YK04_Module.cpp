@@ -1,6 +1,6 @@
 /**
-	The class implements a set of methods of the YK04_Module.h 
-	library for working with a remote control sensors based 
+	The class implements a set of methods of the YK04_Module.h
+	library for working with a remote control sensors based
 	on the YK04 driver.
 
 	https://github.com/YuriiSalimov/YK04_Module
@@ -11,7 +11,7 @@
 #include "YK04_Module.h"
 
 YK04_Module::YK04_Module(
-	const int A_pin, 
+	const int A_pin,
 	const int B_pin,
 	const int C_pin,
 	const int D_pin
@@ -19,7 +19,7 @@ YK04_Module::YK04_Module(
 }
 
 YK04_Module::YK04_Module(
-	const int A_pin, 
+	const int A_pin,
 	const int B_pin,
 	const int C_pin,
 	const int D_pin,
@@ -33,7 +33,7 @@ YK04_Module::YK04_Module(
 	init();
 }
 
-void YK04_Module::init() {
+inline void YK04_Module::init() {
 	pinMode(this->A_pin, INPUT_PULLUP);
 	pinMode(this->B_pin, INPUT_PULLUP);
 	pinMode(this->C_pin, INPUT_PULLUP);
@@ -42,7 +42,7 @@ void YK04_Module::init() {
 
 /**
 	Single reading of the remote control.
-	If the remote control is clamped, 
+	If the remote control is clamped,
 	value of the next pressing - NOT.
 	@return value of pressing the remote control:
 		Button::A - A button is pressed;

@@ -1,7 +1,10 @@
 /**
-	YK04_Module.h - The library describes 
-	a set of methods for working with a remote control 
+	YK04_Module.h - The library describes
+	a set of methods for working with a remote control
 	sensors based on the YK04 driver.
+
+	v.1.0.2:
+	- optimized call of the init() method.
 
 	https://github.com/YuriiSalimov/YK04_Module
 
@@ -15,13 +18,13 @@
 	#include <Arduino.h>
 #else
 	#include <WProgram.h>
-#endif 
+#endif
 
 class YK04_Module final {
 
 	public:
 		/**
-			Enums of a possible pressings 
+			Enums of a possible pressings
 			of the remote controller:
 				A - A button is pressed;
 				B - B button is pressed;
@@ -34,10 +37,10 @@ class YK04_Module final {
 		};
 
 	private:
-		int A_pin = 0; 
-		int B_pin = 0;
-		int C_pin = 0;
-		int D_pin = 0;
+		int A_pin;
+		int B_pin;
+		int C_pin;
+		int D_pin;
 
 		/**
 			Actuation signal: LOW or HIGH.
@@ -45,8 +48,8 @@ class YK04_Module final {
 		int signal;
 
 		/**
-			The value for the temporary storage 
-			of the previous pressing of the remote 
+			The value for the temporary storage
+			of the previous pressing of the remote
 			controller.
 		*/
 		Button previousButton = Button::NOT;
@@ -61,12 +64,12 @@ class YK04_Module final {
 			@param D_pin - D button (D3).
 		*/
 		YK04_Module(
-			const int A_pin, 
+			const int A_pin,
 			const int B_pin,
 			const int C_pin,
 			const int D_pin
 		);
-	
+
 		/**
 			Constructor.
 			Digital ports pins:
@@ -77,7 +80,7 @@ class YK04_Module final {
 			@param invert - invert a sensors actuation signal.
 		*/
 		YK04_Module(
-			const int A_pin, 
+			const int A_pin,
 			const int B_pin,
 			const int C_pin,
 			const int D_pin,
@@ -86,7 +89,7 @@ class YK04_Module final {
 
 		/**
 			Single reading of the remote control.
-			If the remote control is clamped, 
+			If the remote control is clamped,
 			value of the next pressing - NOT.
 			@return value of pressing the remote control.
 		*/
@@ -102,42 +105,42 @@ class YK04_Module final {
 
 		/**
 			Checks if the A button is pressed.
-			@return true - button is pressed, 
+			@return true - button is pressed,
 			false - button is not pressed.
 		*/
 		boolean isA();
 
 		/**
 			Checks if the B button is pressed.
-			@return true - button is pressed, 
+			@return true - button is pressed,
 			false - button is not pressed.
 		*/
 		boolean isB();
 
 		/**
 			Checks if the C button is pressed.
-			@return true - button is pressed, 
+			@return true - button is pressed,
 			false - button is not pressed.
 		*/
 		boolean isC();
 
 		/**
 			Checks if the D button is pressed.
-			@return true - button is pressed, 
+			@return true - button is pressed,
 			false - button is not pressed.
 		*/
 		boolean isD();
-	
+
 	private:
 		/**
 			Initialization of the module.
 		*/
-		void init();
-		
+		inline void init();
+
 		/**
 			Checks if a button is pressed.
 			@param pin - port pin of a button.
-			@return true - button is pressed, 
+			@return true - button is pressed,
 			false - button is not pressed.
 		*/
 		boolean isPressed(const int pin);
