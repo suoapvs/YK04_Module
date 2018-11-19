@@ -45,7 +45,7 @@ class YK04_Module final {
 		/**
 			Actuation signal: LOW or HIGH.
 		*/
-		int signal;
+		volatile int signal = LOW;
 
 		/**
 			The value for the temporary storage
@@ -64,10 +64,10 @@ class YK04_Module final {
 			@param D_pin - D button (D3).
 		*/
 		YK04_Module(
-			const int A_pin,
-			const int B_pin,
-			const int C_pin,
-			const int D_pin
+			int A_pin,
+			int B_pin,
+			int C_pin,
+			int D_pin
 		);
 
 		/**
@@ -77,14 +77,14 @@ class YK04_Module final {
 			@param B_pin - B button (D1).
 			@param C_pin - C button (D2).
 			@param D_pin - D button (D3).
-			@param invert - invert a sensors actuation signal.
+			@param invertSignal - invert a sensors actuation signal.
 		*/
 		YK04_Module(
-			const int A_pin,
-			const int B_pin,
-			const int C_pin,
-			const int D_pin,
-			const boolean invert
+			int A_pin,
+			int B_pin,
+			int C_pin,
+			int D_pin,
+			boolean invertSignal
 		);
 
 		/**
@@ -131,6 +131,15 @@ class YK04_Module final {
 		*/
 		boolean isD();
 
+		/**
+			Inverts signal.
+			If invert signal:
+				onSignal = LOW
+			If not invert signal:
+				onSignal = HIGH
+		*/
+		void invert();
+
 	private:
 		/**
 			Initialization of the module.
@@ -143,7 +152,7 @@ class YK04_Module final {
 			@return true - button is pressed,
 			false - button is not pressed.
 		*/
-		boolean isPressed(const int pin);
+		boolean isPressed(int pin);
 };
 
 #endif

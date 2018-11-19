@@ -23,13 +23,15 @@ YK04_Module::YK04_Module(
 	const int B_pin,
 	const int C_pin,
 	const int D_pin,
-	const boolean invert
+	const boolean invertSignal
 ) {
 	this->A_pin = A_pin;
 	this->B_pin = B_pin;
 	this->C_pin = C_pin;
 	this->D_pin = D_pin;
-	this->signal = (invert ? LOW : HIGH);
+	if (invertSignal) {
+		invert();
+	}
 	init();
 }
 
@@ -102,4 +104,8 @@ boolean YK04_Module::isD() {
 
 boolean YK04_Module::isPressed(const int pin) {
 	return digitalRead(pin) == this->signal;
+}
+
+void YK04_Module::invert() {
+  this->signal = (this->signal == LOW) ? HIGH : LOW;
 }
