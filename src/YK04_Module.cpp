@@ -107,5 +107,5 @@ boolean YK04_Module::isPressed(const int pin) {
 }
 
 void YK04_Module::invert() {
-  this->signal = (this->signal == LOW) ? HIGH : LOW;
+	this->signal = (this->signal == LOW) ? HIGH : LOW;
 }
