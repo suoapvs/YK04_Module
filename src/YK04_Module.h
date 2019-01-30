@@ -3,8 +3,8 @@
 	a set of methods for working with a remote control
 	sensors based on the YK04 driver.
 
-	v.1.0.2:
-	- optimized call of the init() method.
+	v.1.0.4:
+	- Removed deprecated init() method.
 
 	https://github.com/YuriiSalimov/YK04_Module
 
@@ -141,11 +141,6 @@ class YK04_Module final {
 		void invert();
 
 	private:
-		/**
-			Initialization of the module.
-		*/
-		inline void init();
-
 		/**
 			Checks if a button is pressed.
 			@param pin - port pin of a button.

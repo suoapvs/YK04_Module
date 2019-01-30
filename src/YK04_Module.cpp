@@ -25,21 +25,13 @@ YK04_Module::YK04_Module(
 	const int D_pin,
 	const boolean invertSignal
 ) {
-	this->A_pin = A_pin;
-	this->B_pin = B_pin;
-	this->C_pin = C_pin;
-	this->D_pin = D_pin;
+	pinMode(this->A_pin = A_pin, INPUT_PULLUP);
+	pinMode(this->B_pin = B_pin, INPUT_PULLUP);
+	pinMode(this->C_pin = C_pin, INPUT_PULLUP);
+	pinMode(this->D_pin = D_pin, INPUT_PULLUP);
 	if (invertSignal) {
 		invert();
 	}
-	init();
-}
-
-inline void YK04_Module::init() {
-	pinMode(this->A_pin, INPUT_PULLUP);
-	pinMode(this->B_pin, INPUT_PULLUP);
-	pinMode(this->C_pin, INPUT_PULLUP);
-	pinMode(this->D_pin, INPUT_PULLUP);
 }
 
 /**
@@ -56,8 +48,7 @@ inline void YK04_Module::init() {
 YK04_Module::Button YK04_Module::singleRead() {
 	const Button currentButton = multipleRead();
 	if (currentButton != this->previousButton) {
-		this->previousButton = currentButton;
-		return currentButton;
+		return this->previousButton = currentButton;
 	}
 	return Button::NOT;
 }
