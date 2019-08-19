@@ -21,10 +21,10 @@
 */
 #include <YK04_Module.h>
 
-#define A_PIN  7
-#define B_PIN  6
-#define C_PIN  5
-#define D_PIN  4
+#define A_PIN 4 // (D0)
+#define B_PIN 5 // (D1)
+#define C_PIN 6 // (D2)
+#define D_PIN 7 // (D3)
 
 YK04_Module* module;
 
