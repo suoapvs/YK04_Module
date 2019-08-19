@@ -43,7 +43,7 @@ void loop() {
   Serial.print("YK04, Single Reading: ");
   Serial.println(buttonTitle(module->singleRead()));
 
-  delay(500); // optionally, only to delay the output of information in the example
+  delay(300); // optionally, only to delay the output of information in the example
 }
 
 /**
