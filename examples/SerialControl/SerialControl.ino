@@ -21,6 +21,7 @@ YK04_Module* module;
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(9600);
+
   module = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN);
 }
 
@@ -30,4 +31,6 @@ void loop() {
   Serial.print(" | B - " + String(module->isB()));
   Serial.print(" | C - " + String(module->isC()));
   Serial.println(" | D - " + String(module->isD()));
+
+  delay(200); // optionally, only to delay the output of information in the example
 }

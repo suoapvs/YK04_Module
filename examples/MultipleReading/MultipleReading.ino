@@ -31,24 +31,34 @@ YK04_Module* module;
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(9600);
+
   module = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN);
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  const YK04_Module::Button button = module->multipleRead();
-  String buttonTitle;
-  if (button == YK04_Module::Button::A) {
-    buttonTitle = "A";
-  } else if (button == YK04_Module::Button::B) {
-    buttonTitle = "B";
-  } else if (button == YK04_Module::Button::C) {
-    buttonTitle = "C";
-  } else if (button == YK04_Module::Button::D) {
-    buttonTitle = "D";
-  } else {
-    buttonTitle = "NOT";
-  }
   Serial.println("YK04, Multiple Reading: " + buttonTitle);
-  delay(500); // To delay the output of information.
+  Serial.println(buttonTitle(module->multipleRead()));
+
+  delay(500); // optionally, only to delay the output of information in the example
+}
+
+/**
+  Return title of the input button.
+*/
+String buttonTitle(const YK04_Module::Button button) {
+  switch (button) {
+    case YK04_Module::Button::NOT:
+      return "NOT";
+    case YK04_Module::Button::A:
+      return "A";
+    case YK04_Module::Button::B:
+      return "B";
+    case YK04_Module::Button::C:
+      return "C";
+    case YK04_Module::Button::D:
+      return "D";
+    default:
+      return "???";
+  }
 }

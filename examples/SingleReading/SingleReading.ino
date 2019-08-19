@@ -5,7 +5,7 @@
   and displays information in the default Serial.
 
   Single reading of the remote control.
-  If the remote control is clamped, 
+  If the remote control is clamped,
   value of the next pressing - NOT.
   Return value of pressing the remote control:
     Button::A - A button is pressed;
@@ -31,24 +31,34 @@ YK04_Module* module;
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(9600);
+
   module = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN);
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  const YK04_Module::Button button = module->singleRead();
-  String buttonTitle;
-  if (button == YK04_Module::Button::A) {
-    buttonTitle = "A";
-  } else if (button == YK04_Module::Button::B) {
-    buttonTitle = "B";
-  } else if (button == YK04_Module::Button::C) {
-    buttonTitle = "C";
-  } else if (button == YK04_Module::Button::D) {
-    buttonTitle = "D";
-  } else {
-    buttonTitle = "NOT";
-  }
   Serial.println("YK04, Single Reading: " + buttonTitle);
-  delay(500); // To delay the output of information.
+  Serial.println(buttonTitle(module->singleRead()));
+
+  delay(500); // optionally, only to delay the output of information in the example
+}
+
+/**
+  Return title of the input button.
+*/
+String buttonTitle(const YK04_Module::Button button) {
+  switch (button) {
+    case YK04_Module::Button::NOT:
+      return "NOT";
+    case YK04_Module::Button::A:
+      return "A";
+    case YK04_Module::Button::B:
+      return "B";
+    case YK04_Module::Button::C:
+      return "C";
+    case YK04_Module::Button::D:
+      return "D";
+    default:
+      return "???";
+  }
 }
