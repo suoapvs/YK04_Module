@@ -32,10 +32,10 @@ class YK04_Module final {
 		/**
 			Enums of a possible pressings
 			of the remote controller:
-			A - A button is pressed;
-			B - B button is pressed;
-			C - C button is pressed;
-			D - D button is pressed;
+			A - A button is pressed (D0 pin);
+			B - B button is pressed (D1 pin);
+			C - C button is pressed (D2 pin);
+			D - D button is pressed (D3 pin);
 			NOT - not pressed.
 		*/
 		enum Button {
