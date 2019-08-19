@@ -33,11 +33,15 @@ void setup() {
   Serial.begin(9600);
 
   module = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN);
+
+  /* if you need to invert a signal of buttons pressing
+    module = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN, true);
+  */
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  Serial.println("YK04, Single Reading: " + buttonTitle);
+  Serial.print("YK04, Single Reading: ");
   Serial.println(buttonTitle(module->singleRead()));
 
   delay(500); // optionally, only to delay the output of information in the example

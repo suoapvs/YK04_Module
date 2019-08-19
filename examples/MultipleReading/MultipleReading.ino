@@ -37,7 +37,7 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
-  Serial.println("YK04, Multiple Reading: " + buttonTitle);
+  Serial.print("YK04, Multiple Reading: ");
   Serial.println(buttonTitle(module->multipleRead()));
 
   delay(500); // optionally, only to delay the output of information in the example
