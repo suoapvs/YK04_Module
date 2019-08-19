@@ -51,7 +51,7 @@ class YK04_Module final {
 		/**
 			Actuation signal: LOW or HIGH.
 		*/
-		int signal = LOW;
+		int signal = HIGH;
 
 		/**
 			The value for the temporary storage
