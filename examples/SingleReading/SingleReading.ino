@@ -33,8 +33,7 @@ void setup() {
   Serial.begin(9600);
 
   module = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN);
-
-  /* if you need to invert a signal of buttons pressing
+  /* Or if you need to invert a signal of buttons pressing
     module = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN, true);
   */
 }

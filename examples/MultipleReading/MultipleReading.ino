@@ -33,6 +33,9 @@ void setup() {
   Serial.begin(9600);
 
   module = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN);
+  /* Or if you need to invert a signal of buttons pressing
+    module = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN, true);
+  */
 }
 
 // the loop function runs over and over again forever
