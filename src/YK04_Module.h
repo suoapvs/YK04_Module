@@ -1,10 +1,14 @@
 /**
-	YK04_Module.h - The library describes
-	a set of methods for working with a remote control
+	YK04_Module - class describes a set of methods
+	for working with a remote control
 	sensors based on the YK04 driver.
 
 	v.1.0.4:
-	- Removed deprecated init() method.
+	- removed deprecated init() method.
+
+	v.1.0.5:
+	- optimized constructor;
+	- updated documentation.
 
 	https://github.com/YuriiSalimov/YK04_Module
 
@@ -20,17 +24,19 @@
 	#include <WProgram.h>
 #endif
 
+#define YK04_DEFAULT_INVERT_SIGNAL false
+
 class YK04_Module final {
 
 	public:
 		/**
 			Enums of a possible pressings
 			of the remote controller:
-				A - A button is pressed;
-				B - B button is pressed;
-				C - C button is pressed;
-				D - D button is pressed;
-				NOT - not pressed.
+			A - A button is pressed;
+			B - B button is pressed;
+			C - C button is pressed;
+			D - D button is pressed;
+			NOT - not pressed.
 		*/
 		enum Button {
 			A, B, C, D, NOT
@@ -56,42 +62,34 @@ class YK04_Module final {
 
 	public:
 		/**
-			Constructor.
-			Digital ports pins:
-			@param A_pin - A button (D0).
-			@param B_pin - B button (D1).
-			@param C_pin - C button (D2).
-			@param D_pin - D button (D3).
-		*/
-		YK04_Module(
-			int A_pin,
-			int B_pin,
-			int C_pin,
-			int D_pin
-		);
+			Constructor
 
-		/**
-			Constructor.
 			Digital ports pins:
-			@param A_pin - A button (D0).
-			@param B_pin - B button (D1).
-			@param C_pin - C button (D2).
-			@param D_pin - D button (D3).
-			@param invertSignal - invert a sensors actuation signal.
+			@param A_pin - A button (D0)
+			@param B_pin - B button (D1)
+			@param C_pin - C button (D2)
+			@param D_pin - D button (D3)
+			@param invertSignal - invert a sensors actuation signal (default, false)
 		*/
 		YK04_Module(
 			int A_pin,
 			int B_pin,
 			int C_pin,
 			int D_pin,
-			boolean invertSignal
+			boolean invertSignal = YK04_DEFAULT_INVERT_SIGNAL
 		);
 
 		/**
 			Single reading of the remote control.
 			If the remote control is clamped,
 			value of the next pressing - NOT.
-			@return value of pressing the remote control.
+
+			@return value of pressing the remote control (never NULL):
+			Button::A - A button is pressed;
+			Button::B - B button is pressed;
+			Button::C - C button is pressed;
+			Button::D - D button is pressed;
+			Button::NOT - not pressed.
 		*/
 		Button singleRead();
 
@@ -99,12 +97,19 @@ class YK04_Module final {
 			Multiple reading of the remote control.
 			If the remote control is clamped,
 			returns a pressed button value.
-			@return value of pressing the remote control.
+
+			@return value of pressing the remote control (never NULL):
+			Button::A - A button is pressed;
+			Button::B - B button is pressed;
+			Button::C - C button is pressed;
+			Button::D - D button is pressed;
+			Button::NOT - not pressed.
 		*/
 		Button multipleRead();
 
 		/**
 			Checks if the A button is pressed.
+
 			@return true - button is pressed,
 			false - button is not pressed.
 		*/
@@ -112,6 +117,7 @@ class YK04_Module final {
 
 		/**
 			Checks if the B button is pressed.
+
 			@return true - button is pressed,
 			false - button is not pressed.
 		*/
@@ -119,6 +125,7 @@ class YK04_Module final {
 
 		/**
 			Checks if the C button is pressed.
+
 			@return true - button is pressed,
 			false - button is not pressed.
 		*/
@@ -126,6 +133,7 @@ class YK04_Module final {
 
 		/**
 			Checks if the D button is pressed.
+
 			@return true - button is pressed,
 			false - button is not pressed.
 		*/
@@ -133,21 +141,20 @@ class YK04_Module final {
 
 		/**
 			Inverts signal.
-			If invert signal:
-				onSignal = LOW
-			If not invert signal:
-				onSignal = HIGH
+			If invert signal: onSignal = LOW
+			If not invert signal: onSignal = HIGH
 		*/
 		void invert();
 
 	private:
 		/**
 			Checks if a button is pressed.
+
 			@param pin - port pin of a button.
 			@return true - button is pressed,
 			false - button is not pressed.
 		*/
-		boolean isPressed(int pin);
+		inline boolean isPressed(int pin);
 };
 
 #endif
