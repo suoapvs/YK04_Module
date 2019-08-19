@@ -34,7 +34,7 @@ of a sliding cover.
 			@param C_pin - C button (D2).
 			@param D_pin - D button (D3).
 	*/
-	YK04_Module sensor(A_PIN, B_PIN, C_PIN, D_PIN);
+	YK04_Module* yk04 = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN);
 
 	/**
 		If you want to invert a sensor signal:
@@ -42,7 +42,7 @@ of a sliding cover.
 			true - invert a signal;
 			false - not invert a signal.
 	*/
-	YK04_Module sensor(A_PIN, B_PIN, C_PIN, D_PIN, INVERT_SIGNAL);
+	YK04_Module* yk04 = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN, INVERT_SIGNAL);
 
 	/**
 		Single reading of the remote control.
@@ -55,7 +55,7 @@ of a sliding cover.
 			Button::D - D button is pressed;
 			Button::NOT - not pressed.
 	*/
-	sensor.singleRead();
+	yk04->singleRead();
 
 	/**
 		Multiple reading of the remote control.
@@ -68,35 +68,35 @@ of a sliding cover.
 			Button::D - D button is pressed;
 			Button::NOT - not pressed.
 	*/
-	sensor.multipleRead();
+	yk04->multipleRead();
 
 	/**
 		Checks if the A button is pressed.
 		Return true - button is pressed,
 		false - button is not pressed.
 	*/
-	sensor.isA();
+	yk04->isA();
 
 	/**
 		Checks if the B button is pressed.
 		Return true - button is pressed,
 		false - button is not pressed.
 	*/
-	sensor.isB();
+	yk04->isB();
 
 	/**
 		Checks if the C button is pressed.
 		Return true - button is pressed,
 		false - button is not pressed.
 	*/
-	sensor.isC();
+	yk04->isC();
 
 	/**
 		Checks if the D button is pressed.
 		Return true - button is pressed,
 		false - button is not pressed.
 	*/
-	sensor.isD();
+	yk04->isD();
 ```
 
 See [examples](/examples)...
