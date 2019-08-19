@@ -21,6 +21,7 @@ YK04_Module::YK04_Module(
 }
 
 YK04_Module::Button YK04_Module::singleRead() {
+	const Button pressedButton = multipleRead();
 	return (pressedButton != this->previousButton) ?
 		(this->previousButton = pressedButton) :
 		Button::NOT;
